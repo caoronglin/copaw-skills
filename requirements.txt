@@ -1,0 +1,37 @@
+# CoPaw Skills Dependencies
+# Install with: uv pip install -r requirements.txt
+
+# Core MCP Servers
+tavily-mcp>=0.1.0
+arxiv-mcp-server>=0.2.0
+@modelcontextprotocol/server-chart
+@modelcontextprotocol/server-filesystem
+
+# Document Processing
+python-docx>=1.1.0
+openpyxl>=3.1.0
+python-pptx>=0.6.21
+PyPDF2>=3.0.0
+pdf2image>=1.16.0
+
+# Bioinformatics
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# Web Scraping
+scrapling>=0.2.0
+playwright>=1.40.0
+
+# Utilities
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+rich>=13.0.0
+
+# Optional: AI Services
+# modelscope>=1.9.0  # ModelScope AI
+# paddleocr>=2.7.0   # OCR
+
+# Development
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0

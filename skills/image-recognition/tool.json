@@ -1,0 +1,27 @@
+{
+  "tools": [
+    {
+      "name": "image_recognize",
+      "description": "识别图片内容，支持本地图片、网络图片、base64格式，可提取文字、描述场景、识别物体等",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "image_url": {
+            "type": "string",
+            "description": "网络图片URL或base64编码的图片（base64需要以data:image/开头）"
+          },
+          "image_path": {
+            "type": "string",
+            "description": "本地图片的文件路径（二选一：image_url或image_path）"
+          },
+          "prompt": {
+            "type": "string",
+            "description": "识别提示词，比如'提取图片中的所有文字'、'描述图片中的场景'等，可选",
+            "default": "请详细描述这张图片的内容，包括文字、场景、物体等所有信息"
+          }
+        },
+        "required": []
+      }
+    }
+  ]
+}
