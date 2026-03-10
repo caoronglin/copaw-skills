@@ -5,11 +5,21 @@ import base64
 import os
 import sys
 from typing import Optional
+from dotenv import load_dotenv
 
-# API 配置
-API_URL = "https://ai.cnortles.top/v1/chat/completions"
-API_KEY = "sk-jYZoLqVkCYgBoVoKbQo9oWwRQXYRMhMg9DLKHyByi05LhcO5"
-MODEL_NAME = "PaddlePaddle/PaddleOCR-VL-1.5"
+# 加载环境变量
+load_dotenv()
+
+# API 配置 - 从环境变量读取
+API_URL = os.getenv("IMAGE_RECOGNITION_API_URL", "https://ai.cnortles.top/v1/chat/completions")
+API_KEY = os.getenv("IMAGE_RECOGNITION_API_KEY")
+MODEL_NAME = os.getenv("IMAGE_RECOGNITION_MODEL", "PaddlePaddle/PaddleOCR-VL-1.5")
+
+# 检查 API Key 是否配置
+if not API_KEY:
+    print("❌ 错误：IMAGE_RECOGNITION_API_KEY 未配置")
+    print("请在 .env 文件中设置：IMAGE_RECOGNITION_API_KEY=sk-your_key_here")
+    sys.exit(1)
 
 def encode_image_to_base64(image_path: str) -> Optional[str]:
     """将本地图片编码为 base64 格式"""
@@ -17,7 +27,7 @@ def encode_image_to_base64(image_path: str) -> Optional[str]:
         with open(image_path, "rb") as f:
             return base64.b64encode(f.read()).decode("utf-8")
     except Exception as e:
-        print(f"图片编码失败: {e}")
+        print(f"图片编码失败：{e}")
         return None
 
 def recognize_image(
@@ -85,33 +95,33 @@ def recognize_image(
         if "choices" in result and len(result["choices"]) > 0:
             return result["choices"][0]["message"]["content"].strip()
         else:
-            print(f"API 返回格式异常: {result}")
+            print(f"API 返回格式异常：{result}")
             return None
             
     except Exception as e:
-        print(f"图片识别请求失败: {e}")
+        print(f"图片识别请求失败：{e}")
         if hasattr(e, 'response') and e.response is not None:
-            print(f"响应内容: {e.response.text}")
+            print(f"响应内容：{e.response.text}")
         return None
 
 def main():
     if len(sys.argv) < 2:
         print("Usage: ")
-        print("  识别本地图片: python image_recognize.py <本地图片路径> [提示词]")
-        print("  识别网络图片: python image_recognize.py --url <图片URL> [提示词]")
-        print("  识别base64: python image_recognize.py --base64 <base64字符串> [提示词]")
+        print("  识别本地图片：python image_recognize.py <本地图片路径> [提示词]")
+        print("  识别网络图片：python image_recognize.py --url <图片 URL> [提示词]")
+        print("  识别 base64: python image_recognize.py --base64 <base64 字符串> [提示词]")
         sys.exit(1)
     
     if sys.argv[1] == "--url":
         if len(sys.argv) < 3:
-            print("请提供图片URL")
+            print("请提供图片 URL")
             sys.exit(1)
         image_source = sys.argv[2]
         is_local = False
         prompt = sys.argv[3] if len(sys.argv) > 3 else "请详细描述这张图片的内容，包括文字、场景、物体等所有信息"
     elif sys.argv[1] == "--base64":
         if len(sys.argv) < 3:
-            print("请提供base64字符串")
+            print("请提供 base64 字符串")
             sys.exit(1)
         image_source = sys.argv[2]
         is_local = False
