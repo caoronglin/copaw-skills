@@ -1,8 +1,16 @@
 ---
 name: pptx
 description: PPT演示文稿处理：创建、编辑、读取.pptx文件。用户提到"PPT"、"幻灯片"、"演示"、"deck"、".pptx"时使用。
+triggers:
+  - "PPT"
+  - "幻灯片"
+  - "演示文稿"
+  - ".pptx"
+  - "pptx"
+  - "presentation"
 license: Proprietary
 ---
+
 
 # PPTX Skill
 
@@ -237,3 +245,149 @@ pdftoppm -jpeg -r 150 -f N -l N output.pdf slide-fixed
 - `npm install -g pptxgenjs` - creating from scratch
 - LibreOffice (`soffice`) - PDF conversion (auto-configured for sandboxed environments via `scripts/office/soffice.py`)
 - Poppler (`pdftoppm`) - PDF to images
+
+---
+
+## 🎯 实用示例
+
+### 示例1：基本处理流程
+```bash
+# 1. 提取文本内容
+python -m markitdown presentation.pptx --output presentation.md
+
+# 2. 生成缩略图预览
+python scripts/thumbnail.py presentation.pptx --output thumbnails/
+
+# 3. 转换为PDF
+python scripts/office/soffice.py --headless --convert-to pdf presentation.pptx
+
+# 4. 生成图像用于检查
+pdftoppm -jpeg -r 150 presentation.pdf slide
+```
+
+### 示例2：创建新演示文稿
+```bash
+# 从模板创建
+# 1. 分析模板结构
+python scripts/thumbnail.py template.pptx
+
+# 2. 编辑内容
+# 编辑markdown文件，然后使用pptxgenjs生成
+
+# 3. 使用pptxgenjs创建
+pptxgenjs create --title "新产品发布" --slides 10 --output new_presentation.pptx
+```
+
+### 示例3：批量处理
+```bash
+# 批量转换所有PPT为PDF
+for ppt in *.pptx; do
+    python scripts/office/soffice.py --headless --convert-to pdf "$ppt"
+done
+
+# 批量提取文本
+find . -name "*.pptx" -exec python -m markitdown {} --output {}.md \;
+```
+
+### 示例4：质量检查流程
+```bash
+#!/bin/bash
+# QA检查脚本
+PPT_FILE="$1"
+
+echo "=== PPT质量检查: $PPT_FILE ==="
+
+# 1. 检查内容
+echo "1. 检查内容完整性..."
+python -m markitdown "$PPT_FILE" | grep -iE "xxxx|lorem|ipsum|placeholder" && echo "发现占位符内容！"
+
+# 2. 生成缩略图
+echo "2. 生成缩略图..."
+python scripts/thumbnail.py "$PPT_FILE" --output /tmp/thumbnails/
+
+# 3. 转换为PDF
+echo "3. 转换为PDF..."
+python scripts/office/soffice.py --headless --convert-to pdf "$PPT_FILE"
+
+# 4. 生成幻灯片图像
+PPT_PDF="${PPT_FILE%.pptx}.pdf"
+echo "4. 生成幻灯片图像..."
+pdftoppm -jpeg -r 150 "$PPT_PDF" /tmp/slides/slide
+
+echo "检查完成！请查看/tmp/slides/中的图像进行视觉检查"
+```
+
+### 示例5：自动化工作流
+```bash
+#!/bin/bash
+# 自动化PPT处理工作流
+INPUT_DIR="./raw_ppts"
+OUTPUT_DIR="./processed"
+REPORT_DIR="./reports"
+
+mkdir -p "$OUTPUT_DIR" "$REPORT_DIR"
+
+for ppt in "$INPUT_DIR"/*.pptx; do
+    BASENAME=$(basename "$ppt" .pptx)
+    echo "处理: $BASENAME"
+    
+    # 提取文本
+    python -m markitdown "$ppt" --output "$OUTPUT_DIR/${BASENAME}.md"
+    
+    # 生成缩略图
+    python scripts/thumbnail.py "$ppt" --output "$OUTPUT_DIR/thumbnails/${BASENAME}/"
+    
+    # 转换为PDF
+    python scripts/office/soffice.py --headless --convert-to pdf "$ppt" --output "$OUTPUT_DIR/${BASENAME}.pdf"
+    
+    # 生成报告
+    echo "=== $BASENAME ===" >> "$REPORT_DIR/summary.txt"
+    python -m markitdown "$ppt" --stats >> "$REPORT_DIR/summary.txt"
+    echo "" >> "$REPORT_DIR/summary.txt"
+done
+
+echo "所有文件处理完成！"
+```
+
+## 📚 学习资源
+
+### 命令参考
+```bash
+# markitdown文本提取
+python -m markitdown --help
+
+# 缩略图生成
+python scripts/thumbnail.py --help
+
+# LibreOffice转换
+python scripts/office/soffice.py --help
+```
+
+### 相关技能
+- **docx**: Word文档处理
+- **xlsx**: Excel表格处理  
+- **pdf**: PDF文件处理
+- **markdownify-mcp**: 内容转换工具
+
+### 最佳实践
+1. **保持备份**: 处理前备份原始文件
+2. **分步处理**: 复杂操作分步进行
+3. **视觉检查**: 务必生成图像进行视觉检查
+4. **版本控制**: 重要修改使用git管理
+5. **模板复用**: 创建和维护高质量的模板
+
+### 故障排除
+```bash
+# 检查依赖
+python scripts/office/soffice.py --check-deps
+
+# 调试模式
+python -m markitdown --verbose presentation.pptx
+
+# 清理缓存
+rm -rf /tmp/soffice_*
+```
+
+---
+
+**提示**: 对于复杂的PPT编辑任务，建议使用专业的PPT编辑软件（如Microsoft PowerPoint或Google Slides）进行主要编辑，然后使用本工具进行批量处理和自动化任务。

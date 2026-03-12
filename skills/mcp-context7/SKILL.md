@@ -1,12 +1,16 @@
 ---
 name: context7
 description: Context7知识库服务，实时获取库文档和代码示例。用户需要查技术文档、代码示例、API参考时说"用context7"或"查文档"。
+triggers:
+  - "mcp-context7"
+  - "mcp context7"
 mcp:
   type: remote
   url: "https://mcp.context7.com/mcp"
   headers:
     CONTEXT7_API_KEY: "${CONTEXT7_API_KEY}"
 ---
+
 
 # Context7 技能
 

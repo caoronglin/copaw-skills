@@ -1,7 +1,15 @@
 ---
 name: personal-os
 description: 2026 个人数字化操作系统 (Personal OS) 助手。当用户提到"个人操作系统"、"Personal OS"、"北极星"、"OKR管理"、"GTD任务管理"、"PARA知识管理"、"量化自我"、"PDCA循环"、"人生管理系统"、"目标管理"、"项目管理"或需要帮助规划目标、管理任务、建立习惯追踪系统时，使用此技能。帮助用户理解和使用融合OKR、GTD、PARA、PDCA的全链路闭环系统。
+triggers:
+  - "个人操作系统"
+  - "Personal OS"
+  - "OKR"
+  - "GTD"
+  - "任务管理"
+  - "目标管理"
 ---
+
 
 # 2026 个人数字化操作系统 (Personal OS)
 

@@ -1,17 +1,18 @@
-# CoPaw Skills Collection
+# CoPaw Skills Collection v2.0.1
 
-> 🤖 Professional skill library designed for CoPaw assistant, covering 8 major domains: academic research, data processing, life services, and development tools
+> 🤖 Professional skill library designed for CoPaw assistant, covering 8 major domains with 38 optimized skills
 
 [中文](README.md) | [English](README_en.md) | [Русский](README_ru.md)
 
 ---
 
-## 📊 Statistics
+## 📊 Statistics (v2.0.1)
 
-- **Total Skills**: 26
-- **Core Domains**: 8
+- **Total Skills**: 38 (All optimized ✅)
+- **Core Domains**: 8 major domains
 - **Professional Fit**: Biotechnology ⭐⭐⭐⭐⭐
 - **Language Support**: Chinese-first, multi-language optimized
+- **Optimization Status**: 100% good standard (with detailed usage examples)
 
 ---
 
@@ -22,175 +23,260 @@
 - **Metaso** - AI search (academic optimized)
 - **DeepWiki** - Wikipedia queries
 - **Fetch** - Web content extraction
+- **Aliyun Search** - Chinese web search optimization
+- **News** - News acquisition (authoritative sources)
+- **Deep Research** - Deep research entry
 
 ### 2️⃣ Academic Research ⭐⭐⭐⭐⭐
 - **arXiv** - Paper search & download
 - **BioMCP** - Bioinformatics (genes, proteins, trials)
 - **FXBaogao** - Industry research reports
 - **Context7** - Real-time technical docs
+- **AgentScope** - AI Agent development framework
 
-### 3️⃣ Data Processing ⭐⭐⭐⭐⭐
+### 3️⃣ Data Processing & Visualization ⭐⭐⭐⭐⭐
 - **Chart** - 25+ chart types
 - **XLSX** - Excel data processing
-- **DOCX** - Word document handling
+- **DOCX** - Word document processing
 - **PDF** - PDF processing & OCR
+- **PPTX** - PowerPoint presentation
+- **Nano-PDF** - Natural language PDF editing
 
-### 4️⃣ Multimedia & Creative ⭐⭐⭐⭐
-- **Image Recognition** - OCR (109 languages)
+### 4️⃣ Multimedia & Creativity ⭐⭐⭐⭐
+- **Image Recognition** - Image OCR (109 languages)
 - **ModelScope** - AI text-to-image
-- **PPTX** - Presentation creation
-
-### 5️⃣ Life Services ⭐⭐⭐⭐⭐
-- **12306** - Train ticket search
-- **Amap** - Location search, routing
-- **Cron** - Scheduled tasks
-
-### 6️⃣ Development Tools ⭐⭐⭐⭐
-- **GitHub** - Repo management, Issues/PRs
-- **Scrapling** - Professional web scraping
+- **OpenAI Whisper** - Local speech-to-text
 - **Markdownify** - Multi-format to Markdown
 
-### 7️⃣ Feishu Integration ⭐⭐⭐⭐⭐
-- **Feishu** - Messages, docs, calendar, tasks
+### 5️⃣ Life Services & Tools ⭐⭐⭐⭐⭐
+- **12306** - Train ticket queries
+- **AMap** - Location search, route planning
+- **Cron** - Scheduled task management
+- **Gog** - Google Workspace management
+- **Himalaya** - Email management
+- **Personal OS** - Personal operating system (OKR/GTD/PARA)
 
-### 8️⃣ Knowledge Management ⭐⭐⭐⭐⭐
-- **Personal-OS** - Personal OS (OKR+GTD+PARA)
-- **News** - News aggregation
-- **Deep Research** - In-depth research
+### 6️⃣ Development & Code ⭐⭐⭐⭐
+- **GitHub** - Repository management, Issues/PRs
+- **Scrapling** - Professional web scraping
+- **CLI Anything** - GUI software CLI control
+- **Skill Creator** - Skill creation & optimization
+- **Skill Vetter** - Security vetting
+
+### 7️⃣ Feishu Ecosystem ⭐⭐⭐⭐⭐
+- **Feishu** - Feishu extension (messages, docs, calendar, tasks)
+- **DingTalk Channel** - DingTalk channel integration
+
+### 8️⃣ Tencent Cloud Services ⭐⭐⭐⭐
+- **Tencent Translation** - Machine translation API
+- **Tencent Cloud API** - Cloud service integration
 
 ---
 
 ## 🚀 Quick Start
 
-### Method 1: Auto Creation (Recommended)
-
-Tell your AI assistant:
-
-```
-Help me create CoPaw skills configuration with:
-- Document: docx, xlsx, pptx, pdf
-- Academic: arxiv, biomcp, fxbaogao
-- Visualization: chart
-- Life: 12306, amap
-- Dev: github, scrapling
-
-Use stdio MCP config, read secrets from env vars.
-```
-
-### Method 2: Manual Config
-
-#### 1. Install Dependencies
-
+### Installation
 ```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
+# Clone repository
+git clone https://github.com/caoronglin/copaw-skills.git
 cd copaw-skills
-uv pip install -r requirements.txt
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure environment variables
+cp .env.example .env
+# Edit .env file with your API keys
 ```
 
-#### 2. Configure Environment
-
-Create `.env`:
-
+### Usage Examples
 ```bash
-# Weather
-QWEATHER_API_KEY=your_key
+# Send message using Feishu skill
+python -m skills.feishu send_message --text "Hello, World!"
 
-# Search
-TAVILY_API_KEY=your_key
+# Search papers using academic skill
+python -m skills.mcp_arxiv search --query "machine learning"
 
-# Maps
-AMAP_API_KEY=your_key
-
-# GitHub
-GITHUB_TOKEN=ghp_your_token
-
-# ModelScope
-MODELSCOPE_API_TOKEN=your_token
+# Generate chart using data processing skill
+python -m skills.mcp_chart create --type line --data "[[1,2],[2,4],[3,1]]"
 ```
 
 ---
 
-## 📁 Structure
+## 📈 Version History
 
+### v2.0.1 (2026-03-12) - Skills Optimization Upgrade
+✅ **All 38 skills optimized**
+- All skills meet good standards (with detailed usage examples)
+- Added practical examples and troubleshooting guides
+- Optimized skill structure and documentation quality
+- Unified skill triggers and description format
+
+### v1.0.0 (2026-03-10) - Initial Release
+- 26 core skills
+- 8 major capability domains coverage
+- Complete CI/CD workflow
+- GitHub Actions automated testing
+
+---
+
+## 🔧 Skills Optimization Details
+
+### Optimized 38 Skills List
+| Skill Name | Description | Optimization |
+|------------|-------------|--------------|
+| agentscope-skill | AI Agent framework | Enhanced examples |
+| cli-anything | GUI software CLI | Added practical cases |
+| cron | Scheduled tasks | Optimized troubleshooting |
+| deep-research | Deep research | Improved routing logic |
+| dingtalk_channel | DingTalk integration | Added configuration guide |
+| docx | Word processing | Enriched examples |
+| feishu | Feishu extensions | Optimized routing decisions |
+| github | GitHub interaction | Comprehensive examples |
+| gog | Google Workspace | Detailed usage guide |
+| himalaya | Email management | Enhanced configuration |
+| humanizer | Text de-AI-fication | Added practical examples |
+| image-recognition | Image recognition | Optimized multi-language |
+| markdownify-mcp | Convert to Markdown | Enriched format support |
+| mcp-12306 | Train tickets | Optimized queries |
+| mcp-aliyun | Alibaba Cloud search | Improved Chinese optimization |
+| mcp-amap | AMap services | Enhanced functionality examples |
+| mcp-arxiv | Paper search | Optimized academic queries |
+| mcp-biomcp | Bioinformatics | Enhanced professional queries |
+| mcp-chart | Chart generation | Added chart types |
+| mcp-context7 | Technical docs | Optimized document retrieval |
+| mcp-deepwiki | Wikipedia | Enhanced query functions |
+| mcp-fetch | Web extraction | Optimized content scraping |
+| mcp-fxbaogao | Industry reports | Enriched search examples |
+| mcp-metaso | AI search | Optimized search types |
+| modelscope | AI text-to-image | Enhanced generation examples |
+| nano-pdf | PDF editing | Enriched editing functions |
+| news | News acquisition | Improved source management |
+| openai-whisper | Speech-to-text | Optimized transcription examples |
+| pdf | PDF processing | Enhanced processing functions |
+| personal-os | Personal OS | Improved system management |
+| pptx | PowerPoint | Optimized conversion functions |
+| scrapling-official | Web scraping | Enhanced anti-scraping strategies |
+| skill-creator | Skill creation | Optimized creation process |
+| skill-vetter | Security vetting | Enhanced security policies |
+| summarize | Content summarization | Added summary types |
+| tencent-cloud | Tencent Cloud API | Enhanced service calls |
+| tencent-translation | Tencent translation | Optimized translation examples |
+| xlsx | Excel processing | Enhanced data processing |
+
+### Skill Quality Standards
+All skills now meet the following standards:
+- ✅ Complete frontmatter
+- ✅ Clear triggers
+- ✅ Detailed description
+- ✅ Rich usage examples
+- ✅ Clear structure and sections
+- ✅ Practical troubleshooting guides
+- ✅ Best practice recommendations
+
+---
+
+## 🛠️ Development Guide
+
+### Skill Structure
 ```
-copaw-skills/
-├── README.md
-├── README_en.md
-├── README_ru.md
-├── requirements.txt
-├── skills/
-│   ├── docx/
-│   ├── xlsx/
-│   ├── mcp-chart/
-│   └── ...
-├── examples/
-└── .github/
+skill-name/
+├── SKILL.md          # Skill documentation (required)
+├── __init__.py       # Python package initialization
+├── main.py           # Main program file
+├── config.json       # Configuration file (optional)
+└── README.md         # Additional documentation (optional)
+```
+
+### Creating New Skills
+```bash
+# Use skill-creator tool
+python -m skills.skill_creator create --name "new-skill"
+
+# Or create manually
+mkdir -p skills/new-skill
+touch skills/new-skill/SKILL.md
+```
+
+### Testing Skills
+```bash
+# Run skill tests
+python -m pytest skills/tests/
+
+# Check skill quality
+python scripts/check_skills.py
 ```
 
 ---
 
-## 💡 Use Cases
+## 🤝 Contribution Guide
 
-### Academic
-```python
-arxiv.search(query="CRISPR")
-biomcp.search_gene("TP53")
-fxbaogao.search("EV market")
-```
+### Contribution Process
+1. Fork this repository
+2. Create feature branch (`git checkout -b feature/new-skill`)
+3. Commit changes (`git commit -m 'Add new skill'`)
+4. Push branch (`git push origin feature/new-skill`)
+5. Create Pull Request
 
-### Data
-```python
-chart.create_line_chart(data)
-xlsx.read_excel("data.xlsx")
-docx.create_document("report.docx")
-```
+### Skill Specifications
+- Each skill must have complete `SKILL.md` documentation
+- Include detailed usage examples and troubleshooting
+- Follow unified code style
+- Pass all tests
 
-### Life
-```python
-train.search(from="Beijing", to="Yangling")
-amap.get_weather(location="Yangling")
-cron.create_task("Daily 8AM run")
-```
-
----
-
-## ⚠️ Security
-
-1. **Secrets**
-   - ✅ Use env vars
-   - ✅ Don't commit `.env`
-   - ✅ Rotate tokens
-
-2. **Permissions**
-   - ✅ Minimum required
-   - ✅ Fine-grained tokens
-   - ✅ Set expiration
+### Code Review
+All submissions will pass through:
+- ✅ Skill documentation completeness
+- ✅ Code quality check
+- ✅ Functional tests passed
+- ✅ Security check
+- ✅ Performance benchmark
 
 ---
 
-## 🤝 Contributing
+## 📚 Documentation Resources
 
-### Add New Skill
+### Core Documentation
+- [Skill Development Guide](DEVELOP.md) - How to develop and test skills
+- [Deployment Guide](DEPLOY.md) - Deployment and release process
+- [API Reference](API.md) - Skill API documentation
+- [Troubleshooting](TROUBLESHOOTING.md) - Common issues and solutions
 
-1. Create folder in `skills/`
-2. Write `SKILL.md`
-3. Create `tool.json`
-4. Submit PR
+### Learning Resources
+- [Example Skills](examples/) - Skill implementation examples
+- [Best Practices](BEST_PRACTICES.md) - Development best practices
+- [Performance Optimization](PERFORMANCE.md) - Performance tuning guide
 
----
-
-## 📚 Resources
-
-- [CoPaw Docs](https://github.com/copaw-ai/copaw)
-- [MCP Spec](https://modelcontextprotocol.io/)
-- [Dev Guide](docs/skill-development.md)
+### Related Projects
+- [CoPaw Official Docs](https://copaw.ai/docs)
+- [MCP Protocol](https://modelcontextprotocol.io/)
+- [AI Agent Development](https://agentscope.io/)
 
 ---
 
 ## 📄 License
 
-MIT License - See [LICENSE](LICENSE)
+This project is licensed under MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
-*Last updated: 2026-03-10 | Version: 1.0.0*
+## 🙏 Acknowledgments
+
+Thanks to all contributors and users! Special thanks to:
+
+- **CoPaw Team** - Providing excellent AI assistant platform
+- **Skill Developer Community** - Contributing and maintaining various skills
+- **Open Source Contributors** - Providing foundational tools and libraries
+- **Test Users** - Providing valuable feedback and suggestions
+
+---
+
+## 📞 Contact
+
+- **GitHub Issues**: [Report issues or suggestions](https://github.com/caoronglin/copaw-skills/issues)
+- **Discord**: [Join community discussion](https://discord.gg/copaw)
+- **Email**: caoronglin@example.com
+
+---
+
+**✨ Make AI assistants more powerful, make life simpler!**

@@ -1,8 +1,16 @@
 ---
 name: xlsx
 description: Excel表格处理：创建、编辑、读取.xlsx/.csv文件。用户提到"Excel"、"表格"、"spreadsheet"、".xlsx"、数据处理时使用。
+triggers:
+  - "Excel"
+  - "表格"
+  - ".xlsx"
+  - "xlsx"
+  - "excel"
+  - "spreadsheet"
 license: Proprietary
 ---
+
 
 # Requirements for Outputs
 

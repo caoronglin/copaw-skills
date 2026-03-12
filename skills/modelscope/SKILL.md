@@ -1,12 +1,19 @@
 ---
 name: modelscope
 description: 魔搭ModelScope AI能力平台，支持文生图、模型搜索、模型推理。用户说"魔搭"、"modelscope"、"生成图片"、"文生图"时使用。
+triggers:
+  - "魔搭"
+  - "modelscope"
+  - "文生图"
+  - "AI画图"
+  - "生成图片"
 mcp:
   command: "uvx"
   args: ["modelscope-mcp-server"]
   env:
     MODELSCOPE_API_TOKEN: "${MODELSCOPE_API_TOKEN}"
 ---
+
 
 # ModelScope技能（统一版）
 
