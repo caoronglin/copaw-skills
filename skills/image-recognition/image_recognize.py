@@ -8,7 +8,7 @@ from typing import Optional
 
 # API 配置
 API_URL = "https://ai.cnortles.top/v1/chat/completions"
-API_KEY = "sk-jYZoLqVkCYgBoVoKbQo9oWwRQXYRMhMg9DLKHyByi05LhcO5"
+API_KEY = "your_image_recognition_api_key_here"
 MODEL_NAME = "PaddlePaddle/PaddleOCR-VL-1.5"
 
 def encode_image_to_base64(image_path: str) -> Optional[str]:
